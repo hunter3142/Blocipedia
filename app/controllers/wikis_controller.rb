@@ -1,5 +1,5 @@
 class WikisController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+  skip_before_filter :authenticate_user!
   
   def index
   	@wikis = Wiki.all
@@ -35,8 +35,9 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
- 
-    if @wiki.save
+    authorize @wiki
+
+    if @wiki.save 
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
     else
