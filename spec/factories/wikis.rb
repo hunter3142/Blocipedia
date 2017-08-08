@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :wiki do
-    title RandomData.random_sentence
-    body RandomData.random_paragraph
+    title Faker::RickAndMorty.unique.character
+    body Faker::RickAndMorty.unique.quote
   end
 end

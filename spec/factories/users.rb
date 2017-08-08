@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :user do
     sequence(:email){|n| "user#{n}@factory.com" }
-    password RandomData.random_sentence
+    password Faker::Pokemon.name
   end
 end
