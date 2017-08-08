@@ -93,6 +93,8 @@ RSpec.describe WikisController, type: :controller do
   end
 
   describe "PUT update" do
+    login_user
+
     it "updates wiki with expected attributes" do
       sign_in my_user
       new_title = Faker::RickAndMorty.unique.character
@@ -107,7 +109,6 @@ RSpec.describe WikisController, type: :controller do
     end
  
     it "redirects to the updated wiki" do
-      sign_in my_user
       new_title = Faker::RickAndMorty.unique.character
       new_body = Faker::RickAndMorty.unique.quote
  
