@@ -10,5 +10,9 @@ class User < ActiveRecord::Base
   	self.role ||= :standard
   end
 
+  def downgrade
+    current_user.update_attribute(:role, 'standard')
+  end
+
   enum role: [:standard, :premium, :admin]
 end
