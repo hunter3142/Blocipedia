@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :charges, only: [:new, :create]
+  resources :charges, only: [:new, :create] do
+    collection do
+      patch :downgrade_to_standard
+    end
+  end
 
   resources :wikis
 
