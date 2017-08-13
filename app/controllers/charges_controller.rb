@@ -38,4 +38,13 @@ class ChargesController < ApplicationController
       amount: @amount
     }
   end
+
+  def downgrade_to_standard
+    if current_user.premium? && current_user.standard!
+      flash[:notice] = "Your account has been downgraded"
+    else
+      flash[:notice] = "You aren't allowed to do that."
+    end
+    redirect_to :back
+  end
 end

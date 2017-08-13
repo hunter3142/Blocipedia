@@ -3,12 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
-  
-  after_initialize :init         
-
-  def init 
-  	self.role ||= :standard
-  end
 
   enum role: [:standard, :premium, :admin]
+
+  after_initialize :set_role_to_standard         
+  
+
+  private
+
+  def set_role_to_standard 
+    self.role ||= :standard
+  end
 end
