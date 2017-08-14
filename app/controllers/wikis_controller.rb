@@ -18,6 +18,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
+    @wiki.user_id = current_user.id
 
     if @wiki.save
       flash[:notice] = "Wiki was saved."

@@ -1,10 +1,22 @@
 <h1>All Wikis</h1>
 <% @wikis.each do |wiki| %>
-  <div class="media">
-     <div class="media-body">
-       <h4 class="media-heading">
-         <p><%= link_to wiki.title, wiki %></p>
-       </h4> 
+	<% if wiki.private? %>
+		<% if current_user.admin? || (current_user.premium? && current_user == wiki.user) %>
+      <div class="media">
+       <div class="media-body">
+         <h4 class="media-heading">
+           <p><%= link_to wiki.title, wiki %></p>
+         </h4> 
+       </div>
      </div>
-   </div>
+    <% end %>
+	<% else %>
+    <div class="media">
+       <div class="media-body">
+         <h4 class="media-heading">
+           <p><%= link_to wiki.title, wiki %></p>
+         </h4> 
+       </div>
+     </div>
+  <% end %>
 <% end %>

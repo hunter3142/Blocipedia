@@ -41,6 +41,7 @@ class ChargesController < ApplicationController
 
   def downgrade_to_standard
     if current_user.premium? && current_user.standard!
+      current_user.wikis.where(private: true).update_all(private: false)
       flash[:notice] = "Your account has been downgraded"
     else
       flash[:notice] = "You aren't allowed to do that."
