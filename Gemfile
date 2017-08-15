@@ -24,6 +24,7 @@ gem 'devise'
 gem 'pundit'
 gem 'sendgrid-ruby'
 gem 'stripe'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'byebug'
