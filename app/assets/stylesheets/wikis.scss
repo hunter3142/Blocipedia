@@ -1,3 +1,15 @@
 // Place all the styles related to the Wikis controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.wiki-center {
+  text-align: center;
+}
+
+.wiki-shadow {
+  background-color: #f0f0f0;
+	-webkit-box-shadow: 3px 7px 14px -7px rgba(0,0,0,0.75);
+	-moz-box-shadow: 3px 7px 14px -7px rgba(0,0,0,0.75);
+	box-shadow: 3px 7px 14px -7px rgba(0,0,0,0.75);
+	padding: 1em 2em 0 2em;
+}
